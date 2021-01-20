@@ -297,6 +297,64 @@ EJECUTAR EL NODO DE LA SIDECHAIN
 
 java -cp ./examples/simpleapp/target/sidechains-sdk-simpleapp-0.2.6.jar:./examples/simpleapp/target/lib/* com.horizen.examples.SimpleApp ./examples/simpleapp/src/main/resources/my_settings.conf
 
+TRANSFERENCIA
+
+consulta de saldo 
+
+./src/zen-cli -regtest getbalance
+1276.49997155
+
+
+TRANSFERENCIA Id
+
+./src/zen-cli -regtest sc_send "10fde9c365315552761d5f6eef0e15b714196cc4f908fba1163a058b7732e90f" 10 "e1439e3d59d82bc11e1ca3078acee5f2f454be90f385ce3494112f10fc7ddc36"
+16532d28872639be95d1a84b4d31e0610fbf8df7df14a5e73c7add510fd4ddf6
+
+Generar otro bloque "222"
+
+./src/zen-cli -regtest generate 1
+[
+  "047f71203693af19e28c8e9afeee74d8dcb3f7fa9fed6b2d2d66d36cb30a4c65"
+  
+  ]
+
+
+CONFIRMACION DEL BLOQUE INFORMACION
+
+./src/zen-cli -regtest getblock "047f71203693af19e28c8e9afeee74d8dcb3f7fa9fed6b2d2d66d36cb30a4c65"
+{
+  "hash": "047f71203693af19e28c8e9afeee74d8dcb3f7fa9fed6b2d2d66d36cb30a4c65",
+  "confirmations": 1,
+  "size": 665,
+  "height": 222,
+  "version": 3,
+  "merkleroot": "1b9a2f06f498a78ffff6c49af57c6d6ee953b0a136aff46c1262adfe91496893",
+  "scTxsCommitment": "7997b4248be4c6907719f9c7acf86bfeedb2b11a49d7ffe662cbb163b9a416d4",
+  "tx": [
+    "34cf450b2e8816ca07104b7df3ebc4f07991e7392e2292acdfb61220989e7571",
+    "16532d28872639be95d1a84b4d31e0610fbf8df7df14a5e73c7add510fd4ddf6"
+  ],
+  "cert": [
+  ],
+  "time": 1611174461,
+  "nonce": "000053e8f6161d4e483658562f7a27c2a2b7032c337a1a396f8dd5f05e29000a",
+  "solution": "08aa9cd5f147d2598214ca9a5ab86eb6cbe609fbe33a8363d5fffd37c39254a5fb85ecfa",
+  "bits": "200f0f02",
+  "difficulty": 1.000013172800801,
+  "chainwork": "0000000000000000000000000000000000000000000000000000000000000ecf",
+  "anchor": "59d2cde5e65c1414c32ba54f0fe4bdb3d67618125286e6a191317917c812c6d7",
+  "valuePools": [
+    {
+      "id": "sprout",
+      "monitored": true,
+      "chainValue": 0.00000000,
+      "chainValueZat": 0,
+      "valueDelta": 0.00000000,
+      "valueDeltaZat": 0
+    }
+  ],
+  "previousblockhash": "08997cfcb792486e47fe2323e65140688f0f67d7dad36d1b2525d3d7f6feb268"
+}
 
 
 
