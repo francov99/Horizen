@@ -480,5 +480,61 @@ checando el saldo de todas las direcciones
 curl -X POST "http://127.0.0.1:9085/transaction/sendCoinsToAddress" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"outputs\":[{\"publicKey\":\"c9117c9dea421813fd5c3dceee916b2e71a77b89eb284eefa19bc1d00542f60d\",\"value\":1000000000}],\"fee\":0}"
 
 
+SOLICITAR RETIRO DE LA SIDECHAIN A MAINCHAIN
+
+./src/zen-cli -regtest getnewaddress
+ztaBCvATSuRwxHQvMHPXZFn94u1t5u2EQqQ
+
+TRANSACCION resultado
+
+{
+  "result": {
+    "transactionId": "9ef6006c60861b9108cde892f95787b8659db022a00624b473ae9d9cb4756c56"
+  }
+}
+
+
+nuevo bloque generado del retiro de la sidechain a la mainchain
+
+{
+  "result": {
+    "blockId": "823f9b51a07e15ce6cbcbaf7a375d6479ddd359724ff0f1a4b8f7b57a0036430"
+  }
+}
+
+se hizo pero tiene que pasar las 10 epocas 
+./src/zen-cli -regtest listaddressgroupings
+[
+  [
+    [
+      "ztWdHiTSyU3Y2MufRxCiaqA8m8J5YnemgBi",
+      0.99999699
+    ],
+    [
+      "ztYxfw1ZGYNL4s4nPHeLTJVXFVQ1tfRQ8Me",
+      1274.24997155
+    ]
+  ],
+  [
+    [
+      "ztaBCvATSuRwxHQvMHPXZFn94u1t5u2EQqQ",
+      0.00000000,
+      ""
+    ]
+  ]
+]
+
+
+resultado del retiro
+
+[
+      "ztaBCvATSuRwxHQvMHPXZFn94u1t5u2EQqQ",
+      7.50000301,
+      ""
+    ]
+
+
+
+
 
 
