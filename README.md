@@ -357,4 +357,128 @@ CONFIRMACION DEL BLOQUE INFORMACION
 }
 
 
+generando un nuevo bloque en la sidechain
+
+{
+  "result": {
+    "blockId": "bf264bc5f84168bede65f7be9ca9c623a4b340bd50f17b888693df81db1ba031"
+  }
+}
+
+verificación de la transferencia en la mainchain a sidechain 
+
+{
+  "result": {
+    "balance": 7000000000
+  }
+}
+
+Crear una nueva direccion en la sidechain 
+
+{
+  "result": {
+    "proposition": {
+      "publicKey": "c9117c9dea421813fd5c3dceee916b2e71a77b89eb284eefa19bc1d00542f60d"
+    }
+  }
+}
+
+Por alguna razon me dice que no tengo suficiente balances 
+
+
+vuelvo a generar una nueva wallet
+
+{
+  "result": {
+    "proposition": {
+      "publicKey": "d38be40cd99c52f8347db98c140f0905aa6654e4afacdc1202c428d707bdb599"
+    }
+  }
+}
+
+caso extraño: me marca error pero al parecer esta en el memorie pool aparece la primera trasanccion que defini 
+
+{
+  "result": {
+    "transactions": [
+      {
+        "modifierTypeId": 2,
+        "id": "6ef0066d3d37cf024bf231b86262aecb767381657bf94995aef415b2a481e685",
+        "fee": 0,
+        "timestamp": 1611186219137,
+        "newBoxes": [
+          {
+            "nonce": -3472543987563971000,
+            "id": "f082439dd859c577a1299ba0264b5f76bbdf7047b67596a1bb9d8b6144decb15",
+            "typeId": 1,
+            "proposition": {
+              "publicKey": "c9117c9dea421813fd5c3dceee916b2e71a77b89eb284eefa19bc1d00542f60d"
+            },
+            "value": 1000000000
+          }
+        ],
+        "unlockers": [
+          {
+            "boxKey": {
+              "signature": "931f7c6b8a85f53e658d6e06a3cdf1791715538447fb912f8065a1148189aaec0e0f48a1067aabd57961432b6d620e4c6ce362b6ceca22ac3d663d07a4999f00",
+              "typeId": 1
+            },
+            "closedBoxId": "92f4520db8df7c40c379b6af2245eb85842679345ded0eeb22fdd3dec461ff18"
+          }
+        ],
+        "typeId": 3
+      }
+    ]
+  }
+}
+
+***y efectivamente creando un nuevo bloque en la sidechain, se genero la transaccion 
+
+{
+  "result": {
+    "blockId": "e62773fefcb13f68cc64d70a8982479c7715b8ebb4ac18551900729d678f646b"
+  }
+}
+
+
+checando el saldo de todas las direcciones 
+{
+  "result": {
+    "boxes": [
+      {
+        "nonce": -4805021655874983000,
+        "id": "8adbaeab51a3b33a212f4b0e82201823477c294810eed9e5d6b0877df3ea0990",
+        "typeId": 3,
+        "blockSignProposition": {
+          "publicKey": "10fde9c365315552761d5f6eef0e15b714196cc4f908fba1163a058b7732e90f"
+        },
+        "vrfPubKey": {
+          "valid": true,
+          "publicKey": "8877a922cc80929b51c2f7a5f38f96e6ea810a4f37ddee16569ac7bac1ba294c3db51c02f604398ec2db39f514faecfaf6c96e83f13497a24269d38c6875901e345e1692697628df1091ee97df7385f30c37cef27429d7bb1d760ce8f0390100308a406e649611d0d242fb5a9269b86689829b36aa8652c15822448ecee32a34e3d3d8813e6a6ce9a4e1bea7dd3c327c0db5435f8f262785d90d01f6119639801045a746f4b54e15ee009de1d1c7a1df11ebaddcc61a6bb77a0ae9328597000000"
+        },
+        "proposition": {
+          "publicKey": "10fde9c365315552761d5f6eef0e15b714196cc4f908fba1163a058b7732e90f"
+        },
+        "value": 6000000000
+      },
+      {
+        "nonce": -3472543987563971000,
+        "id": "f082439dd859c577a1299ba0264b5f76bbdf7047b67596a1bb9d8b6144decb15",
+        "typeId": 1,
+        "proposition": {
+          "publicKey": "c9117c9dea421813fd5c3dceee916b2e71a77b89eb284eefa19bc1d00542f60d"
+        },
+        "value": 1000000000
+      }
+    ]
+  }
+}
+
+
+
+
+curl -X POST "http://127.0.0.1:9085/transaction/sendCoinsToAddress" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"outputs\":[{\"publicKey\":\"c9117c9dea421813fd5c3dceee916b2e71a77b89eb284eefa19bc1d00542f60d\",\"value\":1000000000}],\"fee\":0}"
+
+
+
 
